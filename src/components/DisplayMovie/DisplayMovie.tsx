@@ -37,7 +37,7 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
   return (
     <div className="DisplayMovie bg-gray-200 p-4 col-span-1">
       <img src={` https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`} className='w-full h-auto' alt={movie.title} />
-      <h1 className='desc'>{movie.title}</h1>
+      <h1 className='desc'>{movie.title} disponible </h1>
 
      
 
