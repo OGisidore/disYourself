@@ -4,13 +4,11 @@
   App Name : E-commerce with React.Js
   Created At : 20/04/2024 17:39:32
 */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import './DisplayMovie.css';
 import { Trends } from '../../models/Trends';
 import { RequestResponse } from '../../models/Request';
 import { getData } from '../../api/entities';
-import { Movies } from '../../models/Movies';
-import ReactPlayer from 'react-player';
 
 
 interface DisplayMovieProps {
@@ -20,7 +18,6 @@ interface DisplayMovieProps {
 
 
 const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
-  const [video, setVideo] = useState<Movies | null>(null)
 
 
 
@@ -30,7 +27,6 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
       const videoData: RequestResponse = await getData(`movie/${movie.id}/videos?language=fr-FR`)
       console.log(videoData.results[0]);
 
-      setVideo(videoData.results[0] as Movies)
 
 
 
@@ -43,11 +39,7 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
       <img src={` https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`} className='w-full h-auto' alt={movie.title} />
       <h1 className='desc'>{movie.title}</h1>
 
-      <div className=" player h-auto">
-        
-
-        <ReactPlayer  url={`https://www.youtube.com/watch?v=${video?.key}`} controls />
-      </div>
+     
 
     </div>
   );
