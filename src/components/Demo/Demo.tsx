@@ -9,6 +9,7 @@ import './Demo.css';
 import { logo } from '../../assets';
 import { RequestResponse } from '../../models/Request';
 import { getData } from '../../api/entities';
+import { videos } from '../../api/data';
 import { Trends } from '../../models/Trends';
 import DisplayMovie from '../DisplayMovie/DisplayMovie';
 
@@ -19,18 +20,19 @@ interface DemoProps {
 
 
 const Demo: FC<DemoProps> = () => {
-  const [videos, setVideos] = useState<Trends[]>([])
+ // const [videos, setVideos] = useState<Trends[]>([])
 
 
 
   useEffect(() => {
     window.scrollTo(0, 0)
     const runLocalData = async () => {
-      const data: RequestResponse = await getData("trending/all/week?language=fr-FR")
+    /*  const data: RequestResponse = await getData("trending/all/week?language=fr-FR")
       setVideos(data.results as Trends[])
       console.log(data.isSuccess);
 
-      console.log(data.results);
+      console.log(data.results);*/
+	console.log(videos)
 
     }
     runLocalData()
@@ -52,9 +54,7 @@ const Demo: FC<DemoProps> = () => {
         </button>
       </nav>
       <h1 className='head_text'>
-        Summarize Articles with <br className='max-md:hidden' />
-        <span className='blue_gradient' >OpenAI GPT-4</span>
-        <span className='orange_gradient '>OpenAI GPT-4</span>
+        Detends-toi avec les choix de film que nous avons faire pour vous  <br className='max-md:hidden' />
       </h1>
       <h2 className='desc'>
         Simplify your reading with Summize, an open-source article summarizer
@@ -62,12 +62,13 @@ const Demo: FC<DemoProps> = () => {
       </h2>
       <div className="grid grid-cols-5 gap-4">
         {
-          videos.length && videos.map((video:Trends)=>{
+           videos.map((video)=>{
             return <DisplayMovie key={video.id} movie={video}/>
           })
         }
         
-      </div>
+      </div> 
+	<div className="" > ola </div>
 
 
     </div>

@@ -12,7 +12,7 @@ import { getData } from '../../api/entities';
 
 
 interface DisplayMovieProps {
-  movie: Trends
+  movie: any
 
 }
 
@@ -24,10 +24,10 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
     const runLocalData = async () => {
-      const videoData: RequestResponse = await getData(`movie/${movie.id}/videos?language=fr-FR`)
-      console.log(videoData.results[0]);
+   /*   const videoData: RequestResponse = await getData(`movie/${movie.id}/videos?language=fr-FR`)
+      console.log(videoData.results[0]);*/
 
-
+	console.log(movie.imageUrl.toString())
 
 
     }
@@ -35,9 +35,9 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ movie }) => {
   },[])
 
   return (
-    <div className="DisplayMovie bg-gray-200 p-4 col-span-1">
-      <img src={` https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`} className='w-full h-auto' alt={movie.title} />
-      <h1 className='desc'>{movie.title} disponible </h1>
+    <div className="DisplayMovie flex flex-col bg-gray-200 p-4 col-span-1">
+      <img src={movie.imageUrl.toString()} className='w-full h-auto' alt={movie.site} />
+      <h1 className='desc bg-red-200 p-3 self-end text-white-500  '>{movie.title} disponible </h1>
 
      
 
