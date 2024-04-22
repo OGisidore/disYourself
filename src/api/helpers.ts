@@ -8,6 +8,7 @@ export const get = async (url: string, options: RequestInit  = {}) => {
             ...options.headers,
             "accept": 'application/json',
             // 'Content-Type': 'application/json;charset=utf-8',
+            "authorization" : process.env.AUTHORIZATION
     
         }
         console.log({options});
